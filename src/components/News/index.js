@@ -3,12 +3,10 @@ import React, { useState, useEffect } from 'react';
 import NewsList from '../NewsList';
 
 function App() {
-  const API_KEY = process.env.REACT_APP_API_KEY;
-
   const [loading, setLoading] = useState(true);
   const [newsData, setNewsData] = useState({});
   const [searchInput, setSearchInput] = useState('');
-  const [selectedCountry, setSelectedCountry] = useState('au');
+  const [selectedCountry, setSelectedCountry] = useState('us');
 
   // const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
   // const url = `https://newsapi.org/v2/top-headlines?country=${selectedCountry}&apiKey=${API_KEY}`;
@@ -28,6 +26,7 @@ function App() {
   //   const url = `https://newsapi.org/v2/everything?q=${searchInput}&from=2023-11-07&sortBy=popularity&apiKey=${API_KEY}`;
   //   fetchData(url);
   // }, [searchInput]);
+  const API_KEY = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
     const url = `https://newsapi.org/v2/top-headlines?country=${selectedCountry}&apiKey=${API_KEY}`;
@@ -49,10 +48,11 @@ function App() {
         setLoading(false);
       }
     }
-
+    console.log('Api called');
     fetchData(url);
-  }, [selectedCountry, API_KEY]);
+  }, [selectedCountry]);
   console.log(newsData);
+
   return (
     <div className="bg-gray-100 min-h-screen">
       <header className="bg-blue-500 text-white py-4 text-center">
