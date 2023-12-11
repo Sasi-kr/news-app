@@ -13,28 +13,6 @@ function App() {
   // const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
   // const url = `https://newsapi.org/v2/top-headlines?country=${selectedCountry}&apiKey=${API_KEY}`;
   // const url = `https://newsapi.org/v2/everything?q=${searchInput}&from=2023-11-07&sortBy=popularity&apiKey=${API_KEY}`;
-  const options = {
-    method: 'GET',
-    headers: { accept: 'application/json' },
-  };
-
-  async function fetchData(url) {
-    setLoading(true);
-    // setError(null);
-    try {
-      const response = await fetch(url, options);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data = await response.json();
-      // console.log(data);
-      setNewsData(data.articles);
-    } catch (error) {
-      console.error('Error fetching data: ', error);
-    } finally {
-      setLoading(false);
-    }
-  }
 
   const handleSubmit = (e) => {
     setSearchInput(e.target.value);
@@ -54,8 +32,26 @@ function App() {
   useEffect(() => {
     const url = `https://newsapi.org/v2/top-headlines?country=${selectedCountry}&apiKey=${API_KEY}`;
 
+    async function fetchData(url) {
+      setLoading(true);
+      // setError(null);
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        // console.log(data);
+        setNewsData(data.articles);
+      } catch (error) {
+        console.error('Error fetching data: ', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
     fetchData(url);
-  }, [selectedCountry]);
+  }, [selectedCountry, API_KEY]);
   console.log(newsData);
   return (
     <div className="bg-gray-100 min-h-screen">
