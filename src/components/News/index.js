@@ -26,9 +26,10 @@ function App() {
   //   const url = `https://newsapi.org/v2/everything?q=${searchInput}&from=2023-11-07&sortBy=popularity&apiKey=${API_KEY}`;
   //   fetchData(url);
   // }, [searchInput]);
-  const API_KEY = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
+    const API_KEY = process.env.REACT_APP_API_KEY;
+
     const url = `https://newsapi.org/v2/top-headlines?country=${selectedCountry}&apiKey=${API_KEY}`;
 
     async function fetchData(url) {

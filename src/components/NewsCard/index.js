@@ -8,7 +8,7 @@ function NewsCard({ newsItem }) {
     <div className="max-w-sm rounded overflow-hidden shadow-lg mb-5">
       <img className=" w-full" src={urlToImage} alt={title} />
       <div className="px-6 py-4 p-5">
-        <div className="font-bold text-xl mb-2 text-blue-400">{title}</div>
+        <div className="font-bold text-xl mb-2 text-blue">{title}</div>
         <p className="text-gray-700 text-base"> {description}</p>
         <p className="text-gray-700 text-base mt-4 font-bold">
           {author} Published at : {publishedAt}
