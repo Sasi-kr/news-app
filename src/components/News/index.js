@@ -12,10 +12,11 @@ function App() {
   // initialise useEffect
   useEffect(() => {
     // API Key
-    // const API_KEY = process.env.REACT_APP_API_KEY;
+    const API_KEY = process.env.REACT_APP_API_KEY;
     // url to fetch country specific news
     // const url = `https://newsapi.org/v2/top-headlines?country=${selectedCountry}&apiKey=${API_KEY}`;
-    const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=d570e32d1c8c4aff8d4c78bb04091bf2`;
+    // const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=d570e32d1c8c4aff8d4c78bb04091bf2`;
+    const url = `https://api.thenewsapi.com/v1/news/all?api_token=${API_KEY}&language=en&limit=5`;
 
     const fetchData = async () => {
       setLoading(true);
@@ -25,8 +26,8 @@ function App() {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        // console.log(data.articles);
-        setNewsData(data.articles);
+        console.log(data.data);
+        setNewsData(data.data);
       } catch (error) {
         console.error('Error fetching data: ', error);
       } finally {
@@ -43,15 +44,15 @@ function App() {
   // console.log(selectedCountry);
 
   return (
-    <div className="bg-gray-100 min-h-screen">
-      <header className="bg-blue-500 text-white py-4 text-center">
+    <div className="">
+      <header className="">
         {' '}
-        <h1 className="text-3xl font-semibold underline">News App</h1>
+        <h1 className="">News App</h1>
       </header>
 
-      <main className="container mx-auto py-6">
+      <main className="">
         <div>
-          <label htmlFor="countrySelect">Select Country:</label>
+          <label htmlFor="">Select Country:</label>
           <select
             id="countrySelect"
             value={selectedCountry}
@@ -66,13 +67,13 @@ function App() {
         </div>
 
         {loading ? (
-          <p className="text-center">Loading...</p>
+          <p className="">Loading...</p>
         ) : (
-          newsData.map((article, index) => {
+          newsData.map((article) => {
             return (
-              <div key={index}>
+              <div key={article.uuid}>
                 <NewsItem
-                  urlToImage={article.urlToImage}
+                  urlToImage={article.image_url}
                   url={article.url}
                   title={article.title}
                   description={article.description}
