@@ -55,7 +55,7 @@ function App() {
     const url = `https://newsapi.org/v2/top-headlines?country=${selectedCountry}&apiKey=${API_KEY}`;
 
     fetchData(url);
-  }, [selectedCountry]);
+  }, [selectedCountry, API_KEY, fetchData]);
   // console.log(newsData);
   return (
     <div className="bg-gray-100 min-h-screen">
