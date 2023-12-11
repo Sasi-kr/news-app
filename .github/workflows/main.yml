@@ -2,8 +2,7 @@
 name: upload app to amazon s3 bucket
 on:
   push:
-    branches:
-    -main
+    branches: main
 
 jobs:
   deploy:
