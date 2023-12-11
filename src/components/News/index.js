@@ -39,12 +39,12 @@ function App() {
   const handleSubmit = (e) => {
     setSearchInput(e.target.value);
   };
-  // console.log(searchInput);
+  console.log(searchInput);
 
   const handleCountryChange = (e) => {
     setSelectedCountry(e.target.value);
   };
-  // console.log(selectedCountry);
+  console.log(selectedCountry);
 
   // useEffect(() => {
   //   const url = `https://newsapi.org/v2/everything?q=${searchInput}&from=2023-11-07&sortBy=popularity&apiKey=${API_KEY}`;
@@ -55,8 +55,8 @@ function App() {
     const url = `https://newsapi.org/v2/top-headlines?country=${selectedCountry}&apiKey=${API_KEY}`;
 
     fetchData(url);
-  }, [selectedCountry, API_KEY, fetchData]);
-  // console.log(newsData);
+  }, [selectedCountry]);
+  console.log(newsData);
   return (
     <div className="bg-gray-100 min-h-screen">
       <header className="bg-blue-500 text-white py-4 text-center">
