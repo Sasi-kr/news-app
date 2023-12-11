@@ -1,3 +1,0 @@
-to test the ci cd pipeline
-corrected the syntax error
-tried one more time

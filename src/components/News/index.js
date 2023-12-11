@@ -1,58 +1,50 @@
-// import './App.css';
+// import modules
 import React, { useState, useEffect } from 'react';
-import NewsList from '../NewsList';
+// import Component
+import NewsItem from '../NewsItem';
 
+// initialise the component
 function App() {
   const [loading, setLoading] = useState(true);
-  const [newsData, setNewsData] = useState({});
+  const [newsData, setNewsData] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   const [selectedCountry, setSelectedCountry] = useState('us');
 
-  // const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
-  // const url = `https://newsapi.org/v2/top-headlines?country=${selectedCountry}&apiKey=${API_KEY}`;
-  // const url = `https://newsapi.org/v2/everything?q=${searchInput}&from=2023-11-07&sortBy=popularity&apiKey=${API_KEY}`;
-
-  const handleSubmit = (e) => {
-    setSearchInput(e.target.value);
-  };
-  console.log(searchInput);
-
-  const handleCountryChange = (e) => {
-    setSelectedCountry(e.target.value);
-  };
-  console.log(selectedCountry);
-
-  // useEffect(() => {
-  //   const url = `https://newsapi.org/v2/everything?q=${searchInput}&from=2023-11-07&sortBy=popularity&apiKey=${API_KEY}`;
-  //   fetchData(url);
-  // }, [searchInput]);
-
+  // initialise useEffect
   useEffect(() => {
+    // API Key
     const API_KEY = process.env.REACT_APP_API_KEY;
-
+    // url to fetch country specific news
     const url = `https://newsapi.org/v2/top-headlines?country=${selectedCountry}&apiKey=${API_KEY}`;
 
-    async function fetchData(url) {
+    const fetchData = async () => {
       setLoading(true);
-      // setError(null);
       try {
         const response = await fetch(url);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        // console.log(data);
+        // console.log(data.articles);
         setNewsData(data.articles);
       } catch (error) {
         console.error('Error fetching data: ', error);
       } finally {
         setLoading(false);
       }
-    }
-    console.log('Api called');
+    };
+    // console.log('Api called');
     fetchData(url);
   }, [selectedCountry]);
-  console.log(newsData);
+
+  const handleSubmit = (e) => {
+    setSearchInput(e.target.value);
+  };
+
+  const handleCountryChange = (e) => {
+    setSelectedCountry(e.target.value);
+  };
+  // console.log(selectedCountry);
 
   return (
     <div className="bg-gray-100 min-h-screen">
@@ -90,7 +82,18 @@ function App() {
         {loading ? (
           <p className="text-center">Loading...</p>
         ) : (
-          <NewsList news={newsData} />
+          newsData.map((article, index) => {
+            return (
+              <div key={index}>
+                <NewsItem
+                  urlToImage={article.urlToImage}
+                  url={article.url}
+                  title={article.title}
+                  description={article.description}
+                />
+              </div>
+            );
+          })
         )}
       </main>
     </div>
