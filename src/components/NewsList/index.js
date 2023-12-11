@@ -1,11 +1,11 @@
 import React from 'react';
-import NewsItem from '../NewsItem';
+import NewsCard from '../NewsCard';
 function NewsList({ news }) {
   return (
     <div>
       <h2>NewsList</h2>
       {news.map((item, index) => {
-        return <NewsItem key={index} newsItem={item} />;
+        return <NewsCard key={index} newsItem={item} />;
       })}
     </div>
   );
