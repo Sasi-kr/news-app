@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import NewsList from '../NewsList';
 
 function App() {
-  const API_KEY = process.env.REACT_APP_NEWS_API_KEY;
+  const API_KEY = process.env.REACT_APP_API_KEY;
 
   const [loading, setLoading] = useState(true);
   const [newsData, setNewsData] = useState({});
