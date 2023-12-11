@@ -10,22 +10,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+      - name: Setup AWS Creds
+      - uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
           aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           aws-region: ${{secrets.AWS_REGION}}
 
-      - name: Install the dependencies and run tests
-        run: |
-          npm install
-          npm run test
+      - name: install the dependancies and run tests
+      run: npm install && npm run test
 
-      - name: Build the React application
-        run: API_KEY=${{secrets.API_KEY}} npm run build
+      - name: Build react application
+      run: REACT_APP_API_KEY = ${{secrets.API_KEY}} npm run build
 
-      - name: Deploy static files from build folder to AWS S3 bucket
-        run: aws s3 sync ./build/ s3://${{secrets.BUCKET}} --delete
+      -name: Deploy static files fom the build folder to s3 bucket
+      run: aws s3 sync ./build/s3://${{secrets.BUCKET}}
+      --delete
