@@ -7,15 +7,15 @@ import NewsItem from '../NewsItem';
 function App() {
   const [loading, setLoading] = useState(true);
   const [newsData, setNewsData] = useState([]);
-  const [searchInput, setSearchInput] = useState('');
   const [selectedCountry, setSelectedCountry] = useState('us');
 
   // initialise useEffect
   useEffect(() => {
     // API Key
-    const API_KEY = process.env.REACT_APP_API_KEY;
+    // const API_KEY = process.env.REACT_APP_API_KEY;
     // url to fetch country specific news
-    const url = `https://newsapi.org/v2/top-headlines?country=${selectedCountry}&apiKey=${API_KEY}`;
+    // const url = `https://newsapi.org/v2/top-headlines?country=${selectedCountry}&apiKey=${API_KEY}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=d570e32d1c8c4aff8d4c78bb04091bf2`;
 
     const fetchData = async () => {
       setLoading(true);
@@ -36,10 +36,6 @@ function App() {
     // console.log('Api called');
     fetchData(url);
   }, [selectedCountry]);
-
-  const handleSubmit = (e) => {
-    setSearchInput(e.target.value);
-  };
 
   const handleCountryChange = (e) => {
     setSelectedCountry(e.target.value);
@@ -68,16 +64,6 @@ function App() {
             <option value="in">India</option>
           </select>
         </div>
-        <form action="" onSubmit={handleSubmit}>
-          <label htmlFor="searchInput">Search News</label>
-          <input
-            type="text"
-            value={searchInput}
-            name="searchInput"
-            className="ml-5 pl-2"
-          />
-          <button className="btn-sm">Submit</button>
-        </form>
 
         {loading ? (
           <p className="text-center">Loading...</p>
