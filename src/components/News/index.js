@@ -13,10 +13,9 @@ function App() {
   useEffect(() => {
     // API Key
     const API_KEY = process.env.REACT_APP_API_KEY;
+
     // url to fetch country specific news
-    // const url = `https://newsapi.org/v2/top-headlines?country=${selectedCountry}&apiKey=${API_KEY}`;
-    // const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=d570e32d1c8c4aff8d4c78bb04091bf2`;
-    const url = `https://api.thenewsapi.com/v1/news/all?api_token=${API_KEY}&language=en&limit=5`;
+    const url = `https://api.thenewsapi.com/v1/news/all?api_token=${API_KEY}&language=en&limit=3`;
 
     const fetchData = async () => {
       setLoading(true);
@@ -26,7 +25,7 @@ function App() {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        console.log(data.data);
+        // console.log(data.data);
         setNewsData(data.data);
       } catch (error) {
         console.error('Error fetching data: ', error);
@@ -71,8 +70,9 @@ function App() {
         ) : (
           newsData.map((article) => {
             return (
-              <div key={article.uuid}>
+              <div className="app" key={article.uuid}>
                 <NewsItem
+                  id={article.uuid}
                   urlToImage={article.image_url}
                   url={article.url}
                   title={article.title}

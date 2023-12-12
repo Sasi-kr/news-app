@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './newsItem.css';
 
-function NewsItem({ urlToImage, url, title, description }) {
+function NewsItem({ id, urlToImage, url, title, description }) {
   return (
     <div className="news-app">
       <div className="news-item">
@@ -9,12 +10,12 @@ function NewsItem({ urlToImage, url, title, description }) {
         <div>
           <p>{description}</p>
 
-          <h2>
+          <h3>
             {' '}
-            <a href={url} target="_blank" rel="noopener noreferrer">
-              {title}{' '}
-            </a>
-          </h2>
+            <Link to={`/news/${id}`} target="_blank" rel="noopener noreferrer">
+              <span className="">read_more</span>{' '}
+            </Link>
+          </h3>
         </div>
       </div>
     </div>
