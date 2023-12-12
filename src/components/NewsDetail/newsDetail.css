@@ -1,0 +1,36 @@
+/* Overall container styles */
+.news-detail-container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Title styles */
+.news-detail-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Image styles */
+.news-detail-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+/* Description styles */
+.news-detail-description {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Read more link styles */
+.news-detail-readmore {
+  text-decoration: none;
+  color: blue;
+  font-weight: bold;
+}

@@ -1,16 +1,26 @@
 .news-app {
-  display: flex;
-  justify-content: center;
-  width: 400px;
+  margin-bottom: 20px;
 }
 
 .news-item {
-  width: 500px;
-  padding: 20px;
-  border: 1px solid blue;
-  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
 }
+
 .news-image {
-  max-width: 100%;
-  justify-content: center;
+  width: 150px; /* Adjust as needed */
+  height: auto;
+  margin-right: 20px;
+}
+
+.news-item p {
+  margin: 0;
+}
+
+/* Style the read more link */
+.news-item a {
+  text-decoration: none;
+  color: blue;
 }

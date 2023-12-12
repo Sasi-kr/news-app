@@ -2,9 +2,10 @@
 import React, { useState, useEffect } from 'react';
 // import Component
 import NewsItem from '../NewsItem';
+import './news.css';
 
 // initialise the component
-function App() {
+function News() {
   const [loading, setLoading] = useState(true);
   const [newsData, setNewsData] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState('us');
@@ -43,14 +44,14 @@ function App() {
   // console.log(selectedCountry);
 
   return (
-    <div className="">
-      <header className="">
+    <div className="news-container">
+      <header className="news-header">
         {' '}
         <h1 className="">News App</h1>
       </header>
 
-      <main className="">
-        <div>
+      <main className="news-main">
+        <div className="country-select">
           <label htmlFor="">Select Country:</label>
           <select
             id="countrySelect"
@@ -87,4 +88,4 @@ function App() {
   );
 }
 
-export default App;
+export default News;
