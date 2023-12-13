@@ -10,8 +10,8 @@
 }
 
 .card-image img {
-  width: auto;
-  height: 100%;
+  min-width: 240px;
+  height: auto;
   border-bottom: 1px solid #ccc;
 }
 

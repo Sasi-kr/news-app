@@ -1,0 +1,12 @@
+.navbar {
+  background-color: #979797;
+  padding: 10px;
+}
+
+.nav-link {
+  margin-right: 30px;
+  text-decoration: underline;
+  color: blue;
+  font-size: 18px;
+  font-weight: bold;
+}

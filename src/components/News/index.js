@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 // import Component
 import NewsItem from '../NewsItem';
+import NavBar from '../NavBar';
 import './news.css';
 
 // initialise the component
@@ -46,8 +47,7 @@ function News() {
   return (
     <div className="news-container">
       <header className="news-header">
-        {' '}
-        <h1 className="">News App</h1>
+        <NavBar />
       </header>
 
       <main className="news-main">
@@ -59,7 +59,7 @@ function News() {
             onChange={handleCategoryChange}
           >
             <option value="top">Top Stories</option>
-            <option value="all">All News</option>
+            <option value="all">All Stories</option>
           </select>
         </div>
 
