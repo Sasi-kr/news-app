@@ -1,11 +1,9 @@
-/* Global Styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
 
-/* Header Styles */
 header {
   background-color: #333;
   color: white;
@@ -17,25 +15,28 @@ h1 {
   margin: 0;
 }
 
-/* Main Styles */
 main {
   padding: 20px;
 }
 
-/* Country Selector Styles */
 label {
   font-weight: bold;
   margin-right: 10px;
 }
-
-#countrySelect {
+select {
+  border: 1px solid;
+  border-radius: 4px;
+  padding: 5px;
+}
+.category-select {
   padding: 5px;
   font-size: 16px;
   border-radius: 5px;
   margin-bottom: 20px;
+  text-align: center;
+  color: blue;
 }
 
-/* News Item Styles */
 .app {
   margin-bottom: 20px;
 }

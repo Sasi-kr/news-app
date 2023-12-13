@@ -41,20 +41,20 @@ const NewsDetail = () => {
   // pass the data in the UI
   return (
     <div className="news-detail-container ">
-      <h2 className="news-detail-title">News Detail</h2>;
       {loading ? (
         <h3>Loading...</h3>
       ) : (
         <div>
-          <h2>{detail.title}</h2>
+          <h2 className="news-detail-title">{detail.title}</h2>;
           <img
             className="news-detail-image"
             src={detail.image_url}
             alt={detail.title}
           />
           <p className="news-detail-description">{detail.description}</p>
+          <p className="news-detail-description">{detail.snippet}</p>
           <Link to={detail.url} className="news-detail-readmore">
-            <p>Read more</p>
+            <p>Read more from the original source</p>
           </Link>
         </div>
       )}

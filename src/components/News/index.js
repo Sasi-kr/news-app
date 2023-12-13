@@ -8,7 +8,7 @@ import './news.css';
 function News() {
   const [loading, setLoading] = useState(true);
   const [newsData, setNewsData] = useState([]);
-  const [selectedCountry, setSelectedCountry] = useState('us');
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   // initialise useEffect
   useEffect(() => {
@@ -16,7 +16,7 @@ function News() {
     const API_KEY = process.env.REACT_APP_API_KEY;
 
     // url to fetch country specific news
-    const url = `https://api.thenewsapi.com/v1/news/all?api_token=${API_KEY}&language=en&limit=3`;
+    const url = `https://api.thenewsapi.com/v1/news/${selectedCategory}?api_token=${API_KEY}&language=en&limit=3`;
 
     const fetchData = async () => {
       setLoading(true);
@@ -36,10 +36,10 @@ function News() {
     };
     // console.log('Api called');
     fetchData(url);
-  }, [selectedCountry]);
+  }, [selectedCategory]);
 
-  const handleCountryChange = (e) => {
-    setSelectedCountry(e.target.value);
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
   };
   // console.log(selectedCountry);
 
@@ -51,18 +51,15 @@ function News() {
       </header>
 
       <main className="news-main">
-        <div className="country-select">
-          <label htmlFor="">Select Country:</label>
+        <div className="category-select">
+          <label htmlFor="">Select Category:</label>
           <select
-            id="countrySelect"
-            value={selectedCountry}
-            onChange={handleCountryChange}
+            id="categorySelect"
+            value={selectedCategory}
+            onChange={handleCategoryChange}
           >
-            <option value="au">Australia</option>
-            <option value="us">United States</option>
-            <option value="jp">Japan</option>
-            <option value="sg">Singapore</option>
-            <option value="in">India</option>
+            <option value="top">Top Stories</option>
+            <option value="all">All News</option>
           </select>
         </div>
 
