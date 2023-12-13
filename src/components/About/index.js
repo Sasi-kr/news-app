@@ -31,7 +31,7 @@ const About = () => {
           If you have any inquiries, feedback, or suggestions, feel free to
           reach out to us. We appreciate your engagement and are always open to
           hearing from our audience. You can contact us through the "contact us"
-          form on our website.
+          form on our website .
         </p>
       </div>
       <div className="back-home">
